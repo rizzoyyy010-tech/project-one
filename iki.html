@@ -1,0 +1,386 @@
+<html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Diriku | Website Kreatif</title>
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #121213;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION BAR --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(18, 18, 19, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #6366f1;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            font-size: 16px;
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        nav a:hover, nav a:focus {
+            color: #6366f1;
+        }
+
+        /* Garis bawah interaktif saat hover */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #6366f1;
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* --- HALAMAN STYLES (SECTIONS) --- */
+        section {
+            min-height: 100vh;
+            padding: 120px 10% 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            position: relative;
+            color: #ffffff;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: #6366f1;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* --- 1. HOME SECTION --- */
+        #home {
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #121213 100%);
+        }
+
+        #home h1 {
+            font-size: 56px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        #home h1 span {
+            color: #6366f1;
+        }
+
+        #home p {
+            font-size: 20px;
+            color: #94a3b8;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #6366f1;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn:hover {
+            background: #4f46e5;
+            transform: translateY(-3px);
+        }
+
+        /* --- 2. PROFIL SECTION --- */
+        #profil {
+            background: #16161a;
+        }
+
+        .profil-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1000px;
+        }
+
+        .profil-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: #2e2e38; /* Tempat foto kamu */
+            border: 5px solid #6366f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            color: #94a3b8;
+            overflow: hidden;
+        }
+
+        .profil-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profil-text {
+            flex: 1;
+        }
+
+        .profil-text h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #6366f1;
+        }
+
+        .profil-text p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        /* --- 3. GALERI SECTION --- */
+        #galeri {
+            background: #121213;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 200px;
+            background: #232329;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #64748b;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- 4. KONTAK SECTION --- */
+        #kontak {
+            background: #16161a;
+        }
+
+        .contact-form {
+            width: 100%;
+            max-width: 500px;
+            background: #1e1e24;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: #121213;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 12px;
+            background: #6366f1;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #4f46e5;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #121213;
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- RESPONSIVE UNTUK HP --- */
+        @media (max-width: 768px) {
+            header { padding: 20px 5%; }
+            nav a { margin-left: 15px; font-size: 14px; }
+            .profil-container { flex-direction: column; text-align: center; }
+            #home h1 { font-size: 38px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGASI UTAMA (MENGGUNAKAN HYPERLINK <a href>) -->
+    <header>
+        <a href="#home" class="logo">Rizky Ramadhan . A</a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#profil">Profil</a>
+            <a href="#galeri">Galeri</a>
+            <a href="#kontak">Kontak</a>
+        </nav>
+    </header>
+
+    <!-- 1. HALAMAN HOME -->
+    <section id="home">
+        <h1>Halo, Saya <span>Rizky Ramadhan</span></h1>
+        <p>Saya seorang pelajar yang antusias untuk belajar hal baru dan menciptakan karya-karya menarik.</p>
+        <a href="#profil" class="btn">Kenali Saya Lebih Lanjut</a>
+    </section>
+
+    <!-- 2. HALAMAN PROFIL -->
+    <section id="profil">
+        <h2 class="section-title">Tentang Saya</h2>
+        <div class="profil-container">
+            <div class="profil-img">
+                <!-- Ganti link di src dengan foto kamu sendiri -->
+                <img src="c:\Users\lab 4\Downloads\rizky ramadhan\1.jpeg" alt="Foto Profil">
+            </div>
+            <div class="profil-text">
+                <h3>Siapa saya?</h3>
+                <p>Saya adalah salah satu murid dari Sekola SMK PGRI 2 CIBINONG, Jurusan saya disekola adalah DKV, hobi yang saya gemari saat ini yaitu bermain futsal </p>
+                <p>Saya percaya bahwa kombinasi antara kreativitas dan teknologi dapat menghasilkan sesuatu yang luar biasa bagi banyak orang.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. HALAMAN GALERI -->
+    <section id="galeri">
+        <h2 class="section-title">Galeri Saya</h2>
+        <div class="gallery-grid">
+            <!-- Isi dengan foto-foto kegiatan atau karyamu -->
+            <div class="gallery-item"><img src="c:\Users\lab 4\Downloads\rizky ramadhan\1.jpeg" alt="Karya 1"></div>
+            <div class="gallery-item"><img src="c:\Users\lab 4\Downloads\rizky ramadhan\8.jpeg" alt="Karya 2"></div>
+            <div class="gallery-item"><img src="c:\Users\lab 4\Downloads\rizky ramadhan\6.jpeg" alt="Karya 3"></div>
+            <div class="gallery-item"><img src="c:\Users\lab 4\Downloads\rizky ramadhan\7.jpeg" alt="Karya 4"></div>
+            <div class="gallery-item"><img src="c:\Users\lab 4\Downloads\rizky ramadhan\9.jpeg" alt="Karya 3"></div>
+            <div class="gallery-item"><img src="c:\Users\lab 4\Downloads\rizky ramadhan\10.jpeg" alt="Karya 4"></div>
+        </div>
+    </section>
+
+    <!-- 4. HALAMAN KONTAK -->
+    <section id="kontak">
+        <h2 class="section-title">Hubungi Saya</h2>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Pesan berhasil dikirim! (Ini hanya simulasi)');">
+            <div class="form-group">
+                <label for="name">Nama Lengkap</label>
+                <input type="text" id="name" placeholder="Nama Anda" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Email Anda" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Pesan</label>
+                <textarea id="message" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
+            </div>
+            <button type="submit">Kirim Pesan</button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Nama Kamu. Dibuat dengan penuh semangat.</p>
+    </footer>
+
+</body>
+</html>
